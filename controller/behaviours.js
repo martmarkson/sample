@@ -1,38 +1,37 @@
-function DeleteEntry(action, id){
+var Controller = {
+	
+	DeleteEntry: function(action, id) {
+		if(window.confirm('Are you sure you want to delete current entry?')){
 		
-	if(window.confirm('Are you sure you want to delete current entry?')){
-	
-		$(document).ready(function(){
-			
-				$.ajax({
+				$(document).ready(function(){
 					
-						type: "POST",
-						url: 'requests/silent_mode_requests_min.php',
-						data: '&action=' + action + '&rowid=' + id,
-						cache: false,
-						async: false,
-						error: function (XMLHttpRequest, textStatus, errorThrown) {
-							alert("An error occured while trying to delete blog event");
-							this; // the options for this ajax request
-						},
-						success: function(data) { 
-							// location.reload();
-							// manipulate DOM
-							$("#results").html(data);
-						}
+						$.ajax({
+							
+								type: "POST",
+								url: 'requests/silent_mode_requests_min.php',
+								data: '&action=' + action + '&rowid=' + id,
+								cache: false,
+								async: false,
+								error: function (XMLHttpRequest, textStatus, errorThrown) {
+									alert("An error occured while trying to delete blog event");
+									this; // the options for this ajax request
+								},
+								success: function(data) { 
+									// location.reload();
+									// manipulate DOM
+									$("#results").html(data);
+								}
+						});
+						
 				});
-				
-		});
+		
+		}
 	
-	}
+	},
 	
-
-}
-
-
-function GetHTMLContent(action, id){
-	
-	$(document).ready(function(){
+	GetHTMLContent: function(action, id){
+		
+		$(document).ready(function(){
 		
 			$.ajax({
 				
@@ -56,14 +55,12 @@ function GetHTMLContent(action, id){
 					}
 			});
 			
-	});
-
-}
-
-
-function GetJSONContent(action, id){
+		});
+	},
 	
-	$(document).ready(function(){
+	GetJSONContent: function(action, id){
+		
+		$(document).ready(function(){
 		
 			$.getJSON('requests/silent_mode_requests_min.php', function(data) {
                   $('#stage').html('<p> Product ID: ' + data.productid + '</p>');
@@ -71,9 +68,10 @@ function GetJSONContent(action, id){
                   $('#stage').append('<p> Description: ' + data.description+ '</p>');
               });
 			
-	});
+		});
+	}
 
-}
+};
 
 
 
