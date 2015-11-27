@@ -76,8 +76,8 @@ class SampleWebApplication
 		
 		//check if user passwordexists in db
 		$encryptionMethod = "AES-256-CBC";
-		$secretHash = "25c6c7ff35b9979b151f2136cd13b0ff";
-		$iv = "1234567812345678";
+		$secretHash = "secrethash";
+		$iv = "numbersequence";
 		
 		return openssl_encrypt($toencrypt, $encryptionMethod, $secretHash, false, $iv);
 
