@@ -13,4 +13,5 @@ ini_set('memory_limit', '64M');
 define('SITEURL', 'www.somedomainname.com');
 define('GENERALMAIL', 'info@somedomainname.com');
 define('LASTMOD', 'lastmodified');
+// i added this line
 ?>
